@@ -215,7 +215,7 @@ app.get('/api/users/:_id/logs', async (req, res) => {
 
   try {
     const user = await getUserById(req.params._id);
-    const log = await getExercLogByUsername(user.username, limit);
+    const log = await getExercLogByUsername(user.username, from, to, limit);
     if (!log) {
       console.log("No exercise log found for given user");
       return res.status(404).send("No Exercise log was found for given user ID");
