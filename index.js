@@ -234,6 +234,8 @@ app.get('/api/users/:_id/logs', async (req, res) => {
 
     res.status(200).json({
       username: user.username,
+      from: new Date(from).toDateString(),
+      to: new Date(to).toDateString(),
       count: log.length,
       _id: user._id,
       log: log.map(exercise => ({

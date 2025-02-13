@@ -64,19 +64,21 @@ const getExercisesByUserName = async (username, from, to, limit) => {
     if(from||to){
         query.where('date'); // if defined a date filter, prepare 'date' fields
 
-        if (from) {
+        if(from) {
             const fromDate = new Date(from);
+            //console.log('from date', fromDate);
             if (isNaN(fromDate)) {
                 throw new Error("Wrong [from] date format.");
             }
             query.gte(fromDate);
         }
-        if (to) {
+        if(to) {
             const toDate = new Date(to);
+            //console.log('to date', toDate);
             if (isNaN(toDate)) {
                 throw new Error("Wrong [to] date format.");
             }
-            query.gte(toDate);
+            query.lte(toDate);
         }
     }
 
